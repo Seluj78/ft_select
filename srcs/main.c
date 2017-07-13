@@ -12,6 +12,7 @@
 
 #include "../includes/ft_select.h"
 
+/*
 int     voir_touche()
 {
 	char     buff[10];
@@ -36,24 +37,7 @@ int     voir_touche()
 
 int     main(int argc, char **argv)
 {
-	char *name_term;
-	struct termios term;
-	int i;
 
-	(void) argc;
-	(void) argv;
-	if ((name_term = getenv("TERM")) == NULL)
-		return (-1);
-	if (tgetent(NULL, name_term) == -1)
-		return (-1);
-	if (tcgetattr(0, &term) == -1)
-		return (-1);
-	term.c_lflag &= ~(ICANON);
-	term.c_lflag &= ~(ECHO);
-	term.c_cc[VMIN] = 1;
-	term.c_cc[VTIME] = 0;
-	if (tcsetattr(0, TCSADRAIN, &term) == -1)
-		return (-1);
 	i = 1;
 	ft_printf("\n");
 	while (argv[i] != NULL)
@@ -64,5 +48,46 @@ int     main(int argc, char **argv)
 
 	ft_printf("\n");
 	voir_touche();
+	return (0);
+}
+ */
+
+struct termios canonical_mode(struct termios term)
+{
+	term.c_lflag &= ~(ICANON);
+	term.c_lflag &= ~(ECHO);
+	term.c_cc[VMIN] = 1;
+	term.c_cc[VTIME] = 0;
+	return (term);
+}
+
+int main(int argc, char **argv)
+{
+	char *term_name;
+	struct termios term;
+
+	(void)argc;
+	(void)argv;
+	if ((term_name = getenv("TERM")) == NULL)
+	{
+		ft_putendl_fd("ft_select: Error, TERM environment variable not set.", 2);
+		return (-1);
+	}
+	if (tgetent(NULL, term_name) == -1)
+	{
+		ft_putendl_fd("ft_select: Error, tgetent was unable to find the term you're using.", 2);
+		return (-1);
+	}
+	if (tcgetattr(0, &term) == -1)
+	{
+		ft_putendl_fd("ft_select: Error, tcgetattr was unable to fetch your terminal attributes.", 2);
+		return (-1);
+	}
+	term = canonical_mode(term);
+	if (tcsetattr(0, TCSADRAIN, &term) == -1)
+	{
+		ft_putendl_fd("ft_select: Error, tcsetattr was unable to set the modified terminal attributes.", 2);
+		return (-1);
+	}
 	return (0);
 }
