@@ -26,12 +26,12 @@ LIBFT =	libft/libft.a
 
 CC = gcc
 
-FLAGS = -g3 -Wall -Wextra -Werror #-fsanitize=address
+FLAGS = -g3 -Wall -Wextra -Werror
 
 all: $(NAME)
 
 $(NAME): $(OBJ) $(LIBFT)
-		$(CC) $(FLAGS) $(OBJ) -o $(NAME) $(LIBFT)
+		$(CC) $(FLAGS) $(OBJ) -o $(NAME) $(LIBFT) -ltermcap
 
 %.o : $(SRC_PATH)/%.c
 		    $(CC) -o $@ -c $< $(FLAGS)

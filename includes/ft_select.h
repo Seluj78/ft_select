@@ -14,6 +14,10 @@
 # define FT_SELECT_H
 
 # include "../libft/includes/libft.h"
+# include <termios.h>
+# include <unistd.h>
+# include <term.h>
+
 
 typedef char	t_bool;
 
