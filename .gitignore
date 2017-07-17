@@ -32,5 +32,6 @@
 *.dSYM/
 *.su
 .idea/
+.deps/
 cmake-build-debug/
 ft_select
