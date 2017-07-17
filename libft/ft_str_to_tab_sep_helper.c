@@ -41,8 +41,8 @@ char			*ft_strepur(char *str, int a)
 	return (cpy);
 }
 
-void			ft_str_to_tab_sep_helper(char *temp, char ***tab, char sep)
+void			ft_str_to_tab_sep_helper(char *temp, char ***array, char sep)
 {
-	*tab = NULL;
-	*tab = ft_alloc_mem(temp, *tab, sep);
+	*array = NULL;
+	*array = ft_alloc_mem(temp, *array, sep);
 }

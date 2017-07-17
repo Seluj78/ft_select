@@ -1,55 +1,53 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: jlasne <marvin@42.fr>                      +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2017/01/17 10:25:59 by jlasne            #+#    #+#              #
-#    Updated: 2017/03/16 12:50:13 by jlasne           ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+NAME	 = ft_select
 
-NAME = ft_select
+IDIR	 = includes/
+LIDIR    = libft/includes/
+LIB	     = libft/libft.a
+LNAME	 = libft
+LDIR	 = libft
 
-SRC =	main.c\
+LTCAPS   = -ltermcap
 
-OBJ = $(SRC:.c=.o)
+CC	 = clang
+CFLAGS	+= -I $(IDIR) -I $(LIDIR)
+CFLAGS	+= -Wall -Wextra -Werror
 
-SRC_PATH = srcs/
+SDIR	 = srcs/
 
-SRC_POS = $(addprefix $(SRC_PATH),$(SRC))
+SRCS	 = 			$(SDIR)core/main.c \
+                    $(SDIR)core/init.c \
+                    $(SDIR)core/exit.c \
+          			$(SDIR)utils/utils.c \
+                    $(SDIR)signals/signals.c \
+           			$(SDIR)core/input_loop.c \
+         			$(SDIR)display/refresh_screen.c \
+           			$(SDIR)display/clear_screen_from_text.c  \
+           			$(SDIR)display/print_words.c \
+                	$(SDIR)core/return_highlighted_words.c
 
-INC = -I includes
+OBJS	 = $(SRCS:.c=.o)
 
-LIBFT =	libft/libft.a
+RM	 = rm -f
 
-CC = gcc
+all: $(LIB) $(NAME)
 
-FLAGS = -g3 -Wall -Wextra -Werror
+$(LIB):
+	cd $(LDIR) && $(MAKE)
 
-all: $(NAME)
+$(NAME): $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIB) $(LTCAPS)
 
-$(NAME): $(OBJ) $(LIBFT)
-		$(CC) $(FLAGS) $(OBJ) -o $(NAME) $(LIBFT) -ltermcap
-
-%.o : $(SRC_PATH)/%.c
-		    $(CC) -o $@ -c $< $(FLAGS)
-
-$(LIBFT):
-		make -C ./libft/
+%.o:$(SRCS)/%.c
+	$(CC) -o $@ -c $< $(FLAGS)
 
 clean:
-		rm -rf $(OBJ)
-			make clean -C ./libft/
+	$(RM) $(OBJS)
+	cd $(LDIR) && $(MAKE) clean
 
 fclean: clean
-		rm -rf $(NAME)
-			make fclean -C ./libft/
+	$(RM) $(NAME)
+	cd $(LDIR) && $(MAKE) fclean
 
 re: fclean all
 
-test:
-	make re
-
-.PHONY : all re clean fclean test
+.PHONY: all clean fclean re

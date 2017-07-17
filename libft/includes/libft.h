@@ -108,14 +108,17 @@ char			*ft_itoa_base_uint(uintmax_t n, int base);
 int				ft_printf(const char *format, ...);
 char			**ft_str_to_tab_sep(char *str, char separator, int opt);
 int				ft_free_array(char **arr);
-char			**ft_tabdup(char **tab);
+char			**ft_tabdup(char **arr);
 char			**ft_add_to_array(char *str, char **arr);
 int				ft_arraylen(char **arr);
 char			**ft_remfrom_array(int rem, char **arr);
 char			*ft_strjoin_sep(char *s1, char *sep, char *s2);
 char			*ft_strepur(char *str, int a);
 void			ft_print_array(char **arr);
-void			ft_str_to_tab_sep_helper(char *temp, char ***tab, char sep);
-char			**ft_alloc_mem(char *str, char **tab, char separator);
+void			ft_str_to_tab_sep_helper(char *temp, char ***array, char sep);
+char			**ft_alloc_mem(char *str, char **array, char separator);
+void				ft_remove_nth_from_array(int nth, void *array, size_t width, int length);
+void				ft_putcharn(char c, size_t number);
+void				ft_putcharn_fd(char c, size_t number, int file_descriptor);
 
 #endif

@@ -75,23 +75,23 @@ static int		ft_wordsnbr(char *str, char separator)
 	return (words);
 }
 
-char			**ft_alloc_mem(char *str, char **tab, char separator)
+char			**ft_alloc_mem(char *str, char **array, char separator)
 {
 	int	x;
 	int	w;
 
 	x = 0;
 	w = ft_wordsnbr(str, separator);
-	tab = malloc((w + 1) * sizeof(*tab));
-	if (tab == NULL)
+	array = malloc((w + 1) * sizeof(*array));
+	if (array == NULL)
 		ft_printf("Character error\n");
 	while (x < w)
 	{
-		tab[x] = malloc(ft_strlen(str));
+		array[x] = malloc(ft_strlen(str));
 		++x;
 	}
-	tab[x] = NULL;
-	return (tab);
+	array[x] = NULL;
+	return (array);
 }
 
 char			**ft_str_to_tab_sep(char *str, char separator, int opt)

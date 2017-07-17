@@ -141,7 +141,9 @@ SRC = ft_bzero.c\
 	  ft_arraylen.c\
 	  ft_remfrom_array.c\
 	  ft_strjoin_sep.c\
-	  ft_print_array.c
+	  ft_print_array.c\
+	  ft_remove_nth_from_array.c\
+	  ft_putcharn.c
 
 OBJ = $(SRC:.c=.o)
 
