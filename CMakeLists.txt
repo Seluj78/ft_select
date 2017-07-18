@@ -10,7 +10,7 @@ set(SOURCE_FILES
         srcs/signals/signals.c
         srcs/utils/utils.c
         srcs/core/exit.c
-        srcs/display/clear_screen_from_text.c
+        srcs/display/cl_screen.c
         srcs/core/input_loop.c
         srcs/display/print_words.c
         srcs/display/refresh_screen.c

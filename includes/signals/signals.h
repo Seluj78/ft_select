@@ -18,6 +18,6 @@
 # include "../core/exit.h"
 # include "../display/display.h"
 
-void			set_signals(void (*restart_function)(int));
+void			signal_handler(void (*restart_function)(int));
 
 #endif

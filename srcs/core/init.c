@@ -12,7 +12,7 @@
 
 #include "core/init.h"
 
-static void		setup_term_helper(t_data *data)
+static void		init_term_helper(t_data *data)
 {
 	data->term->c_lflag &= ~(ICANON);
 	data->term->c_lflag &= ~(ECHO);
@@ -24,14 +24,14 @@ static void		setup_term_helper(t_data *data)
 	ft_putstr_fd(tgetstr("vi", NULL), 2);
 }
 
-void			setup_terminal(t_data *data)
+void			init_term(t_data *data)
 {
 	char			*terminal_name;
 	struct termios	save_tattr;
 
 	if (!(terminal_name = getenv("TERM")))
 	{
-		ft_putendl("Error getting data->TERM");
+		ft_printf("Error getting data->TERM\n");
 		exit(1);
 	}
 	if (tgetent(NULL, terminal_name) <= 0)
@@ -47,10 +47,10 @@ void			setup_terminal(t_data *data)
 	}
 	else if ((data->term = (struct termios*)malloc(sizeof(struct termios))))
 		ft_memcpy(data->term, &save_tattr, sizeof(struct termios));
-	setup_term_helper(data);
+	init_term_helper(data);
 }
 
-void			setup_data(t_data *data, int argc, char **argv)
+void			init_data(t_data *data, int argc, char **argv)
 {
 	data->words = argv + 1;
 	data->word_count = argc - 1;
@@ -58,5 +58,5 @@ void			setup_data(t_data *data, int argc, char **argv)
 	ft_bzero(data->highlighted_p, (argc - 1) * sizeof(int));
 	data->current_word = 0;
 	data->single_column_width = get_longest_word_length(data) + 2;
-	setup_terminal(data);
+	init_term(data);
 }

@@ -6,7 +6,7 @@
 /*   By: jlasne <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/18 09:42:09 by jlasne            #+#    #+#             */
-/*   Updated: 2017/07/18 09:55:21 by jlasne           ###   ########.fr       */
+/*   Updated: 2017/07/18 10:23:07 by jlasne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include "../core/exit.h"
 
 void				remove_selected(t_data *data);
-void				clear_screen_from_text(t_data *data);
+void				cl_screen(t_data *data);
 void				refresh_screen(int signum);
 void				print_words(t_data *data);
 

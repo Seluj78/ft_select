@@ -12,7 +12,7 @@
 
 #include "signals/signals.h"
 
-void			set_signals(void (*restart_function)(int))
+void			signal_handler(void (*restart_function)(int))
 {
 	signal(SIGWINCH, refresh_screen);
 	signal(SIGCONT, restart_function);

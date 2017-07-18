@@ -19,7 +19,7 @@ void				abort_no_exit(int signum)
 
 	(void)signum;
 	data = get_set_data(NULL);
-	clear_screen_from_text(data);
+	cl_screen(data);
 	data->term->c_lflag |= (ICANON | ECHO);
 	tcsetattr(0, 0, data->term);
 	ft_putstr_fd(tgetstr("te", NULL), 2);

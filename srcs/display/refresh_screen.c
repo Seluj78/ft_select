@@ -39,14 +39,14 @@ static int			will_fit_on_screen(t_data *env)
 
 void				refresh_screen(int signum)
 {
-	t_data	*env;
+	t_data	*data;
 
 	(void)signum;
-	env = get_set_data(NULL);
-	get_window_size(env);
-	clear_screen_from_text(env);
-	if (will_fit_on_screen(env))
-		print_words(env);
+	data = get_set_data(NULL);
+	get_window_size(data);
+	cl_screen(data);
+	if (will_fit_on_screen(data))
+		print_words(data);
 	else
 		ft_putstr_fd("Not enough room.", 2);
 }

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clear_screen_from_text.c                           :+:      :+:    :+:   */
+/*   cl_screen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jlasne <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include "display/display.h"
 
-void			clear_screen_from_text(t_data *data)
+void			cl_screen(t_data *data)
 {
 	int i;
 

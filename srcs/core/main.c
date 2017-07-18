@@ -18,8 +18,8 @@ static void			restart(int signum)
 
 	(void)signum;
 	data = get_set_data(NULL);
-	setup_terminal(data);
-	set_signals(&restart);
+	init_term(data);
+	signal_handler(&restart);
 	refresh_screen(0);
 }
 
@@ -33,9 +33,9 @@ int					main(int argc, char **argv)
 		exit(1);
 	}
 	env = malloc(sizeof(t_data));
-	setup_data(env, argc, argv);
+	init_data(env, argc, argv);
 	get_set_data(env);
-	set_signals(&restart);
+	signal_handler(&restart);
 	refresh_screen(0);
 	input_loop();
 	return (0);
