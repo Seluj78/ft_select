@@ -6,16 +6,23 @@
 /*   By: jlasne <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/18 08:47:57 by jlasne            #+#    #+#             */
-/*   Updated: 2017/07/18 08:49:18 by jlasne           ###   ########.fr       */
+/*   Updated: 2017/07/18 09:23:32 by jlasne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "core/init.h"
 
-static void		setup_term_helper()
+static void		setup_term_helper(t_data *data)
 {
-
-
+	data->term->c_lflag &= ~(ICANON);
+	data->term->c_lflag &= ~(ECHO);
+	data->term->c_cc[VMIN] = 1;
+	data->term->c_cc[VTIME] = 0;
+	if (tcsetattr(0, TCSADRAIN, data->term) == -1)
+		exit(1);
+	ft_putstr_fd(tgetstr("ti", NULL), 2);
+	ft_putstr_fd(tgetstr("vi", NULL), 2);
+}
 
 void			setup_terminal(t_data *data)
 {
@@ -40,14 +47,7 @@ void			setup_terminal(t_data *data)
 	}
 	else if ((data->term = (struct termios*)malloc(sizeof(struct termios))))
 		ft_memcpy(data->term, &save_tattr, sizeof(struct termios));
-	data->term->c_lflag &= ~(ICANON);
-	data->term->c_lflag &= ~(ECHO);
-	data->term->c_cc[VMIN] = 1;
-	data->term->c_cc[VTIME] = 0;
-	if (tcsetattr(0, TCSADRAIN, data->term) == -1)
-		exit(1);
-	ft_putstr_fd(tgetstr("ti", NULL), 2);
-	ft_putstr_fd(tgetstr("vi", NULL), 2);
+	setup_term_helper(data);
 }
 
 void			setup_environment(t_data *env, int argc, char **argv)

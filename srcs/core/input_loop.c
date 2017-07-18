@@ -1,7 +1,14 @@
-
-/*
-** input_loop waits for keypresses on call to read
-*/
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   input_loop.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jlasne <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/07/18 09:24:08 by jlasne            #+#    #+#             */
+/*   Updated: 2017/07/18 09:26:57 by jlasne           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 # include "core/ft_select.h"
 
@@ -76,23 +83,23 @@ static void			remove_selected(t_data *data)
 void				input_loop(void)
 {
 	unsigned long	keycode;
-	t_data	*env;
+	t_data			*data;
 	int				should_refresh;
 
-	env = get_set_data(NULL);
+	data = get_set_data(NULL);
 	while (keycode = 0, (read(0, &keycode, 6)) != 0)
 	{
 		should_refresh = 1;
 		if (keycode == KEY_BACKSPACE || keycode == KEY_DELETE)
-			remove_selected(env);
+			remove_selected(data);
 		else if (keycode == KEY_SPACE)
-			select_deselect(env);
+			select_deselect(data);
 		else if (keycode == KEY_ENTER)
-			return_highlighted_words(env);
+			return_highlighted_words(data);
 		else if (keycode == KEY_LEFT || keycode == KEY_RIGHT)
-			handle_left_right(env, keycode);
+			handle_left_right(data, keycode);
 		else if (keycode == KEY_DOWN || keycode == KEY_UP)
-			handle_up_down(env, keycode);
+			handle_up_down(data, keycode);
 		else if (keycode == KEY_ESCAPE || keycode == 'q')
 			abort_exit(0);
 		else
