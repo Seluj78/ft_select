@@ -21,7 +21,7 @@ SRCS	 = 			$(SDIR)core/main.c \
                     $(SDIR)signals/signals.c \
            			$(SDIR)core/input_loop.c \
          			$(SDIR)display/refresh_screen.c \
-           			$(SDIR)display/clear_screen.c  \
+           			$(SDIR)display/cl_screen.c  \
            			$(SDIR)display/print_words.c \
                 	$(SDIR)core/return_highlighted_words.c
 
