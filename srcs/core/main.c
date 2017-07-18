@@ -25,16 +25,16 @@ static void			restart(int signum)
 
 int					main(int argc, char **argv)
 {
-	t_data	*env;
+	t_data	*data;
 
 	if (argc < 2)
 	{
 		ft_putendl_fd("Usage: ft_select [parameters]", 2);
 		exit(1);
 	}
-	env = malloc(sizeof(t_data));
-	init_data(env, argc, argv);
-	get_set_data(env);
+	data = malloc(sizeof(t_data));
+	init_data(data, argc, argv);
+	get_set_data(data);
 	signal_handler(&restart);
 	refresh_screen(0);
 	input_loop();

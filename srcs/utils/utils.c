@@ -36,11 +36,11 @@ int			get_longest_word_length(t_data *data)
 ** always returns the current env
 */
 
-t_data		*get_set_data(t_data *new_env)
+t_data		*get_set_data(t_data *new_data)
 {
-	static t_data	*stored_env = NULL;
+	static t_data	*stored_data = NULL;
 
-	if (new_env)
-		stored_env = new_env;
-	return (stored_env);
+	if (new_data)
+		stored_data = new_data;
+	return (stored_data);
 }

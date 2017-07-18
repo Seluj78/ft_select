@@ -38,32 +38,32 @@ static void			handle_up_down(t_data *data, int keycode)
 	}
 }
 
-static void			handle_left_right(t_data *env, int keycode)
+static void			handle_left_right(t_data *data, int keycode)
 {
 	int				new_current_word;
 	int				position_from_top;
 
-	position_from_top = env->current_word % env->height;
+	position_from_top = data->current_word % data->height;
 	if (keycode == KEY_LEFT)
 	{
-		new_current_word = env->current_word - env->height;
+		new_current_word = data->current_word - data->height;
 		if (new_current_word < 0)
-			env->current_word = new_current_word
-			+ (env->word_count / env->height) * env->height
-			+ (position_from_top < env->height
-				- env->word_count % env->height) * env->height;
+			data->current_word = new_current_word
+			+ (data->word_count / data->height) * data->height
+			+ (position_from_top < data->height
+				- data->word_count % data->height) * data->height;
 		else
-			env->current_word = new_current_word;
-		if (env->current_word >= env->word_count)
-			env->current_word -= env->height;
+			data->current_word = new_current_word;
+		if (data->current_word >= data->word_count)
+			data->current_word -= data->height;
 	}
 	else if (keycode == KEY_RIGHT)
 	{
-		new_current_word = env->current_word + env->height;
-		if (new_current_word >= env->word_count)
-			env->current_word = position_from_top;
+		new_current_word = data->current_word + data->height;
+		if (new_current_word >= data->word_count)
+			data->current_word = position_from_top;
 		else
-			env->current_word = new_current_word;
+			data->current_word = new_current_word;
 	}
 }
 

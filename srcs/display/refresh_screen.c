@@ -29,12 +29,12 @@ static void			get_window_size(t_data *data)
 	data->height = window.ws_row;
 }
 
-static int			will_fit_on_screen(t_data *env)
+static int			will_fit_on_screen(t_data *data)
 {
 	int				number_of_columns;
 
-	number_of_columns = env->word_count / env->height + 1;
-	return ((number_of_columns * env->single_column_width) < env->width);
+	number_of_columns = data->word_count / data->height + 1;
+	return ((number_of_columns * data->single_column_width) < data->width);
 }
 
 void				refresh_screen(int signum)

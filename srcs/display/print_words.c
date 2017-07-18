@@ -51,25 +51,25 @@ static void			turn_off_special_text(t_data *data, int current)
 		ft_putstr_fd(tgetstr("se", NULL), 2);
 }
 
-void				print_words(t_data *env)
+void				print_words(t_data *data)
 {
 	int				row;
 	int				column;
 	int				current;
 
 	row = 0;
-	while (row < env->height && row < env->word_count)
+	while (row < data->height && row < data->word_count)
 	{
 		ft_putstr_fd(tgoto(tgetstr("cm", NULL), 0, row), 2);
 		ft_putstr_fd(tgetstr("ce", NULL), 2);
 		column = 0;
-		while (((current = (env->height * column) + row)) < env->word_count)
+		while (((current = (data->height * column) + row)) < data->word_count)
 		{
-			turn_on_special_text(env, current);
-			ft_putstr_fd(env->words[current], 2);
-			turn_off_special_text(env, current);
-			ft_putcharn_fd(' ', env->single_column_width
-							- ft_strlen(env->words[current]), 2);
+			turn_on_special_text(data, current);
+			ft_putstr_fd(data->words[current], 2);
+			turn_off_special_text(data, current);
+			ft_putcharn_fd(' ', data->single_column_width
+							- ft_strlen(data->words[current]), 2);
 			column++;
 		}
 		row++;
