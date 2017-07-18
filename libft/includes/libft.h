@@ -6,7 +6,7 @@
 /*   By: jlasne <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/03 12:36:05 by jlasne            #+#    #+#             */
-/*   Updated: 2017/03/09 14:37:21 by jlasne           ###   ########.fr       */
+/*   Updated: 2017/07/18 08:46:23 by jlasne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,8 +117,9 @@ char			*ft_strepur(char *str, int a);
 void			ft_print_array(char **arr);
 void			ft_str_to_tab_sep_helper(char *temp, char ***array, char sep);
 char			**ft_alloc_mem(char *str, char **array, char separator);
-void				ft_remove_nth_from_array(int nth, void *array, size_t width, int length);
-void				ft_putcharn(char c, size_t number);
-void				ft_putcharn_fd(char c, size_t number, int file_descriptor);
+void			ft_remove_nth_from_array(int nth, void *array,
+													size_t width, int length);
+void			ft_putcharn(char c, size_t number);
+void			ft_putcharn_fd(char c, size_t number, int file_descriptor);
 
 #endif

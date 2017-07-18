@@ -1,9 +1,17 @@
-//
-// Created by seluj78 on 7/17/17.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jlasne <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/07/18 08:43:19 by jlasne            #+#    #+#             */
+/*   Updated: 2017/07/18 08:43:50 by jlasne           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#ifndef FT_GET_LONGEST_WORD_LENGTH_H
-# define FT_GET_LONGEST_WORD_LENGTH_H
+#ifndef UTILS_H
+# define UTILS_H
 
 # include "../core/data.h"
 # include "../../libft/includes/libft.h"

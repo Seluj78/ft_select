@@ -1,9 +1,26 @@
-# include "core/init.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jlasne <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/07/18 08:47:57 by jlasne            #+#    #+#             */
+/*   Updated: 2017/07/18 08:49:18 by jlasne           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "core/init.h"
+
+static void		setup_term_helper()
+{
+
+
 
 void			setup_terminal(t_data *data)
 {
-	char		    *terminal_name;
-	struct termios  save_tattr;
+	char			*terminal_name;
+	struct termios	save_tattr;
 
 	if (!(terminal_name = getenv("TERM")))
 	{
@@ -28,7 +45,7 @@ void			setup_terminal(t_data *data)
 	data->term->c_cc[VMIN] = 1;
 	data->term->c_cc[VTIME] = 0;
 	if (tcsetattr(0, TCSADRAIN, data->term) == -1)
-		exit (1);
+		exit(1);
 	ft_putstr_fd(tgetstr("ti", NULL), 2);
 	ft_putstr_fd(tgetstr("vi", NULL), 2);
 }
