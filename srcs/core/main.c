@@ -10,9 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "core/ft_select.h"
-
-
+# include "core/ft_select.h"
 
 static void			restart(int signum)
 {

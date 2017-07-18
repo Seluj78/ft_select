@@ -1,12 +1,4 @@
-#include "core/exit.h"
-
-/*
-** ve: return the cursor to normal
-** cl: clear the entire screen and position the cursor at the upper
-** left corner
-** te: undo what is done by the `ti' string. Programs that output the
-** ti: string on entry should output this string when they exit
-*/
+# include "core/exit.h"
 
 void				abort_no_exit(int signum)
 {
@@ -28,6 +20,14 @@ void				abort_no_exit(int signum)
 		ioctl(0, TIOCSTI, copy);
 	}
 }
+
+/*
+** ve: return the cursor to normal
+** cl: clear the entire screen and position the cursor at the upper
+** left corner
+** te: undo what is done by the `ti' string. Programs that output the
+** ti: string on entry should output this string when they exit
+*/
 
 void				abort_exit(int signum)
 {

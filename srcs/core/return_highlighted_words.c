@@ -1,10 +1,4 @@
-#include "core/ft_select.h"
-
-
-/*
-** ve: return the cursor to normal
-** cl: clear the entire screen and position the cursor at the upper left corner
-*/
+# include "core/ft_select.h"
 
 void			return_highlighted_words(t_data *data)
 {
@@ -27,3 +21,8 @@ void			return_highlighted_words(t_data *data)
 	}
 	exit(0);
 }
+
+/*
+** ve: return the cursor to normal
+** cl: clear the entire screen and position the cursor at the upper left corner
+*/

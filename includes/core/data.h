@@ -3,7 +3,7 @@
 //
 
 #ifndef FT_DATA_H
-#define FT_DATA_H
+# define FT_DATA_H
 
 # define KEY_ESCAPE 0x1B
 # define KEY_SPACE 0x20

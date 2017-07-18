@@ -1,14 +1,9 @@
-//
-// Created by seluj78 on 7/17/17.
-//
-
-#include "core/init.h"
-
+# include "core/init.h"
 
 void			setup_terminal(t_data *data)
 {
-	char			*terminal_name;
-	struct termios save_tattr;
+	char		    *terminal_name;
+	struct termios  save_tattr;
 
 	if (!(terminal_name = getenv("TERM")))
 	{

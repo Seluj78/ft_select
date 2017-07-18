@@ -1,4 +1,4 @@
-# include "../../includes/signals/signals.h"
+# include "signals/signals.h"
 
 void			set_signals(void (*restart_function)(int))
 {

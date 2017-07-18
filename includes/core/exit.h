@@ -3,7 +3,7 @@
 //
 
 #ifndef FT_SELECT_EXIT_H
-#define FT_SELECT_EXIT_H
+# define FT_SELECT_EXIT_H
 
 # include "../core/data.h"
 # include "../utils/utils.h"

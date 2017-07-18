@@ -3,7 +3,7 @@
 ** input_loop waits for keypresses on call to read
 */
 
-#include "core/ft_select.h"
+# include "core/ft_select.h"
 
 static void			select_deselect(t_data *data)
 {
