@@ -11,8 +11,6 @@
 /* ************************************************************************** */
 
 # include "core/ft_select.h"
-
-
 /*
 ** ve: return the cursor to normal
 ** cl: clear the entire screen and position the cursor at the upper left corner
