@@ -50,13 +50,13 @@ void			setup_terminal(t_data *data)
 	setup_term_helper(data);
 }
 
-void			setup_environment(t_data *env, int argc, char **argv)
+void			setup_data(t_data *data, int argc, char **argv)
 {
-	env->words = argv + 1;
-	env->word_count = argc - 1;
-	env->highlighted_p = malloc((argc - 1) * sizeof(int));
-	ft_bzero(env->highlighted_p, (argc - 1) * sizeof(int));
-	env->current_word = 0;
-	env->single_column_width = get_longest_word_length(env) + 2;
-	setup_terminal(env);
+	data->words = argv + 1;
+	data->word_count = argc - 1;
+	data->highlighted_p = malloc((argc - 1) * sizeof(int));
+	ft_bzero(data->highlighted_p, (argc - 1) * sizeof(int));
+	data->current_word = 0;
+	data->single_column_width = get_longest_word_length(data) + 2;
+	setup_terminal(data);
 }

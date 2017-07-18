@@ -20,7 +20,7 @@
 # include "../../libft/includes/libft.h"
 # include "../utils/utils.h"
 
-void			setup_environment(t_data *data, int argc, char **argv);
+void			setup_data(t_data *data, int argc, char **argv);
 void			setup_terminal(t_data *data);
 
 #endif

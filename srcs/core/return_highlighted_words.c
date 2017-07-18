@@ -6,15 +6,11 @@
 /*   By: jlasne <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/18 09:27:28 by jlasne            #+#    #+#             */
-/*   Updated: 2017/07/18 09:27:35 by jlasne           ###   ########.fr       */
+/*   Updated: 2017/07/18 09:44:22 by jlasne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "core/ft_select.h"
-/*
-** ve: return the cursor to normal
-** cl: clear the entire screen and position the cursor at the upper left corner
-*/
+#include "core/ft_select.h"
 
 void			return_highlighted_words(t_data *data)
 {

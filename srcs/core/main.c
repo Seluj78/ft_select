@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "core/ft_select.h"
+#include "core/ft_select.h"
 
 static void			restart(int signum)
 {
@@ -33,7 +33,7 @@ int					main(int argc, char **argv)
 		exit(1);
 	}
 	env = malloc(sizeof(t_data));
-	setup_environment(env, argc, argv);
+	setup_data(env, argc, argv);
 	get_set_data(env);
 	set_signals(&restart);
 	refresh_screen(0);

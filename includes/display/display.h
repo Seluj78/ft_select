@@ -1,9 +1,17 @@
-//
-// Created by seluj78 on 7/17/17.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   display.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jlasne <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/07/18 09:42:09 by jlasne            #+#    #+#             */
+/*   Updated: 2017/07/18 09:55:21 by jlasne           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#ifndef FT_SELECT_DISPLAY_H_H
-# define FT_SELECT_DISPLAY_H_H
+#ifndef DISPLAY_H
+# define DISPLAY_H
 
 # include "../core/data.h"
 # include <termios.h>
@@ -13,6 +21,7 @@
 # include "../utils/utils.h"
 # include "../core/exit.h"
 
+void				remove_selected(t_data *data);
 void				clear_screen_from_text(t_data *data);
 void				refresh_screen(int signum);
 void				print_words(t_data *data);

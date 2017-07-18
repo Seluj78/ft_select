@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print_words.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jlasne <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/07/18 09:44:42 by jlasne            #+#    #+#             */
+/*   Updated: 2017/07/18 09:54:35 by jlasne           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "display/display.h"
 
 /*
@@ -9,6 +21,19 @@
 ** us: turn on underline mode
 ** ue: turn off underline mode
 */
+
+void				remove_selected(t_data *data)
+{
+	ft_remove_nth_from_array(data->current_word, (void*)data->words
+			, sizeof(char*), data->word_count);
+	ft_remove_nth_from_array(data->current_word, (void*)data->highlighted_p
+			, sizeof(int), data->word_count);
+	data->word_count--;
+	if (data->word_count <= 0)
+		abort_exit(0);
+	if (data->current_word >= data->word_count)
+		data->current_word = 0;
+}
 
 static void			turn_on_special_text(t_data *data, int current)
 {

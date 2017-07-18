@@ -1,4 +1,16 @@
-# include "utils/utils.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jlasne <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/07/18 09:45:24 by jlasne            #+#    #+#             */
+/*   Updated: 2017/07/18 09:45:42 by jlasne           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "utils/utils.h"
 
 int			get_longest_word_length(t_data *data)
 {
@@ -32,4 +44,3 @@ t_data		*get_set_data(t_data *new_env)
 		stored_env = new_env;
 	return (stored_env);
 }
-

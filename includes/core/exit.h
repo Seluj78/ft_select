@@ -18,8 +18,7 @@
 # include "../display/display.h"
 # include <termios.h>
 # include <term.h>
-# include <bits/signum.h>
-# include <signal.h>
+# include <sys/signal.h>
 # include <sys/ioctl.h>
 
 void				abort_no_exit(int signum);

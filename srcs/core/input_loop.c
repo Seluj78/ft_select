@@ -6,11 +6,11 @@
 /*   By: jlasne <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/18 09:24:08 by jlasne            #+#    #+#             */
-/*   Updated: 2017/07/18 09:26:57 by jlasne           ###   ########.fr       */
+/*   Updated: 2017/07/18 09:54:14 by jlasne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "core/ft_select.h"
+#include "core/ft_select.h"
 
 static void			select_deselect(t_data *data)
 {
@@ -67,17 +67,24 @@ static void			handle_left_right(t_data *env, int keycode)
 	}
 }
 
-static void			remove_selected(t_data *data)
+int					loop_helper(unsigned long keycode, t_data *data, \
+															int should_refresh)
 {
-	ft_remove_nth_from_array(data->current_word, (void*)data->words
-								, sizeof(char*), data->word_count);
-	ft_remove_nth_from_array(data->current_word, (void*)data->highlighted_p
-								, sizeof(int), data->word_count);
-	data->word_count--;
-	if (data->word_count <= 0)
+	if (keycode == KEY_BACKSPACE || keycode == KEY_DELETE)
+		remove_selected(data);
+	else if (keycode == KEY_SPACE)
+		select_deselect(data);
+	else if (keycode == KEY_ENTER)
+		return_highlighted_words(data);
+	else if (keycode == KEY_LEFT || keycode == KEY_RIGHT)
+		handle_left_right(data, keycode);
+	else if (keycode == KEY_DOWN || keycode == KEY_UP)
+		handle_up_down(data, keycode);
+	else if (keycode == KEY_ESCAPE || keycode == 'q')
 		abort_exit(0);
-	if (data->current_word >= data->word_count)
-		data->current_word = 0;
+	else
+		should_refresh = 0;
+	return (should_refresh);
 }
 
 void				input_loop(void)
@@ -87,24 +94,13 @@ void				input_loop(void)
 	int				should_refresh;
 
 	data = get_set_data(NULL);
-	while (keycode = 0, (read(0, &keycode, 6)) != 0)
+	keycode = 0;
+	while (read(0, &keycode, 6) != 0)
 	{
 		should_refresh = 1;
-		if (keycode == KEY_BACKSPACE || keycode == KEY_DELETE)
-			remove_selected(data);
-		else if (keycode == KEY_SPACE)
-			select_deselect(data);
-		else if (keycode == KEY_ENTER)
-			return_highlighted_words(data);
-		else if (keycode == KEY_LEFT || keycode == KEY_RIGHT)
-			handle_left_right(data, keycode);
-		else if (keycode == KEY_DOWN || keycode == KEY_UP)
-			handle_up_down(data, keycode);
-		else if (keycode == KEY_ESCAPE || keycode == 'q')
-			abort_exit(0);
-		else
-			should_refresh = 0;
+		should_refresh = loop_helper(keycode, data, should_refresh);
 		if (should_refresh)
 			refresh_screen(0);
+		keycode = 0;
 	}
 }
