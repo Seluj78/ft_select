@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   exit.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jlasne <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/07/18 08:47:25 by jlasne            #+#    #+#             */
+/*   Updated: 2017/07/18 08:47:44 by jlasne           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "core/exit.h"
 
 /*
@@ -11,7 +23,7 @@
 void				abort_no_exit(int signum)
 {
 	t_data	*data;
-	char			copy[2];
+	char	copy[2];
 
 	(void)signum;
 	data = get_set_data(NULL);
@@ -32,5 +44,5 @@ void				abort_no_exit(int signum)
 void				abort_exit(int signum)
 {
 	abort_no_exit(signum);
-	exit (0);
+	exit(0);
 }
